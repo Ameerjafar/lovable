@@ -15,9 +15,50 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
+  id        String    @id @default(uuid())
+  email     String    @unique
   password  String
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
   updatedAt DateTime
+  projects  Project[]
+}
+
+model Project {
+  id                  String                 @id @default(uuid())
+  title               String
+  intialPrompt        String
+  userId              String
+  converstaionHistory ConverstationHistory[]
+  createdAt           DateTime               @default(now())
+  updatedAt           DateTime
+  user                User                   @relation(fields: [userId], references: [id])
+}
+
+model ConverstationHistory {
+  id        String           @id @default(uuid())
+  conntents String
+  hidden    Boolean          @default(false)
+  toolCall  ToolCall?
+  type      ConversationType
+  from      MessageForm
+  projectId String
+  createdAt DateTime         @default(now())
+  project   Project          @relation(fields: [projectId], references: [id])
+}
+
+enum ToolCall {
+  READ_FILE
+  WRITE_FILE
+  UPDATE_FILE
+  DELETE_FILE
+}
+
+enum MessageForm {
+  USER
+  ASSISTANT
+}
+
+enum ConversationType {
+  TOOL_CALL
+  TEXT_MESSAGE
 }

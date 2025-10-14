@@ -54,6 +54,7 @@ export const loginController = async (req: Request, res: Response) => {
         email,
       },
     });
+    
     if (!user) {
       return res.status(401).json({ message: "we cannot find the user in db" });
     }
@@ -65,7 +66,9 @@ export const loginController = async (req: Request, res: Response) => {
       userId: user.id,
       userEmail: user.email,
     };
-    const token = jwt.sign(userPayload, process.env.JWT_SECRET!, { expiresIn: '1h'});
+    const token = jwt.sign(userPayload, process.env.JWT_SECRET!, {
+      expiresIn: "1h",
+    });
     return res.status(200).json({ token });
   } catch (error: unknown) {
     console.log(error);
