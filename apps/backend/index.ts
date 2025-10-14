@@ -13,7 +13,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/', routes);
+app.use("/", routes);
 
 app.listen(process.env.BACKEND_PORT, () => {
   console.log("port is running on", process.env.BACKEND_PORT);
