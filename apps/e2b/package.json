@@ -1,0 +1,23 @@
+{
+  "name": "e2btemplate",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun run --watch index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@e2b/code-interpreter": "^2.0.1",
+    "@openrouter/ai-sdk-provider": "^1.2.0",
+    "ai": "^5.0.70",
+    "dotenv": "^17.2.3",
+    "e2b": "^2.2.9",
+    "express": "^5.1.0"
+  }
+}

@@ -36,12 +36,12 @@ model Project {
 
 model ConverstationHistory {
   id        String           @id @default(uuid())
-  conntents String
+  contents  String
   hidden    Boolean          @default(false)
   toolCall  ToolCall?
   type      ConversationType
   from      MessageForm
-  projectId String
+  projectId String           
   createdAt DateTime         @default(now())
   project   Project          @relation(fields: [projectId], references: [id])
 }

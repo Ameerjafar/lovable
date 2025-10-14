@@ -48,7 +48,7 @@ projectRoute.post("/converstaion", async (req: Request, res: Response) => {
     if (!projectId) {
       return res.status(400).json({ message: "projectId is not found" });
     }
-    const project = await prisma.project.findUnique({
+    const project = await prisma.project.findMany({
       where: {
         id: projectId as string,
       },
