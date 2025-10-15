@@ -18,8 +18,9 @@ app.post("/prompt", async (req: Request, res: Response) => {
   const sandbox = await Sandbox.create(process.env.TEMPLATE_ID!);
   // const url = sandbox.getHost(3000);
   // console.log(url);
-  sandbox.commands.run("npm install");
-  // const host = await sandbox.getHost(3000)
+  sandbox.commands.run("npm run dev");
+  const host = sandbox.getHost(5173);
+  console.log(host);
   console.log("prompt", prompt);
   const openrouter = createOpenRouter({
     apiKey: process.env.OPENROUTER_API_KEY,
